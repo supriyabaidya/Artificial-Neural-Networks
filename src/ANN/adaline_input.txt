@@ -1,0 +1,7 @@
+learning_rate=0.2
+weights=0.25,0.25,0.25
+patterns::true output
+ 1: 1::-1
+ 1:-1:: 1
+-1: 1::-1
+-1:-1::-1

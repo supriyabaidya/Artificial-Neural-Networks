@@ -1,0 +1,166 @@
+Input (following lines will be in 'perceptron_input.txt' file) :
+-----------------------------------------------------------------------------
+
+
+learning_rate=1
+weights=0,0,0,0
+theta=1
+patterns::true output
+ 1: 1: 1:: 1
+-1: 1: 1::-1
+ 1:-1: 1::-1
+ 1: 1:-1::-1
+
+
+Output: [ When python version is below 3.6.4 ]
+------------------------------------------------------------------------------
+
+----------------------------------PERCEPTRON----------------------------------
+Installed python version is :  2 . 7 . 4
+Required python version is : 3.6.4
+Please install python version 3.6.4 or above.
+Exiting .....
+Press any key to exit .
+
+******************************************************************************
+
+Output: [ When python version is 3.6.4 or above and the package 'psutil' is present (if not , it'll be installed if net connection is present ) and total system memory is less than 2 GB ]
+------------------------------------------------------------------------------
+
+----------------------------------PERCEPTRON----------------------------------
+Installed python version is :  3 . 6 . 4
+Required python version is : 3.6.4
+Hence the python compiler meet the system requirement.
+
+
+'psutil' is present there , so continuing to memory check....
+
+Total system memory is : 1836 M
+The system memory does not meet the requirement.
+
+Press any key to exit .
+
+******************************************************************************
+
+Output: [ When python version is 3.6.4 or above and the package 'psutil' is not present, it'll NOT be installed if net connection is NOT present ) ]
+------------------------------------------------------------------------------
+
+----------------------------------PERCEPTRON----------------------------------
+Installed python version is :  3 . 6 . 4
+Required python version is : 3.6.4
+Hence the python compiler meet the system requirement.
+
+
+psutil is not present , so installing it.....
+
+Collecting psutil 
+  Retrying (Retry(total=4, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B7E70>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Retrying (Retry(total=3, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B7BF0>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B7990>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B7C10>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B76B0>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Could not find a version that satisfies the requirement hi (from versions: )
+No matching distribution found for psutil
+
+please connect to internet to install psutil 
+Without psutil library,can not check total physical memory of the system.
+After installing psutil manually or connecting to internet Re-run it .
+
+Press any key to exit .
+
+
+******************************************************************************
+
+Output: [ When python version is 3.6.4 or above and total system memory is greater than 2 GB ( and if you didn't give the input file name via command line argument , it'll ask the input file name at Runtime ) ]
+------------------------------------------------------------------------------
+
+----------------------------------PERCEPTRON----------------------------------
+
+Installed python version is :  3 . 6 . 4
+Required python version is : 3.6.4
+Hence the python compiler meet the system requirement.
+
+'psutil' is present there , so continuing to memory check....
+
+Total system memory is : 3414 M
+Hence the system memory meet the requirement.
+
+The input file structure of input data is given below for example :
+
+BEGIN : file structure
+    learning_rate=1
+    weights=0,0,0,0
+    theta=1
+    patterns::true output
+     1: 1: 1:: 1
+    -1: 1: 1::-1
+     1:-1: 1::-1
+     1: 1:-1::-1
+END : file structure
+
+Usage : perceptron.py [input_file_name]
+    'input_file_name' is optional , you can give the 'input_file_name' here 
+
+
+Learning rate 1
+Weights :  [0, 0, 0, 0]
+Theta :  1
+List of patterns :  [[1, 1, 1], [-1, 1, 1], [1, -1, 1], [1, 1, -1]]
+true OUTPUT :  [1, -1, -1, -1] 
+
+epoch#  1
+iteration    x[0]  x[1]  x[2]    x[3]    y_in    y_out   t   w[0]    w[1]    w[2]    w[3]
+--------------------------------------------------------------------------------------------------
+1              1        1         1         1         0         0        1        1      1         1         1
+2              1        -1         1         1         2         1        -1        0      2         0         0
+3              1        1         -1         1         2         1        -1        -1      1         1         -1
+4              1        1         1         -1         2         1        -1        -2      0         0         0
+------------------------------------------------------------------------------------------------------
+epoch#  2
+iteration    x[0]  x[1]  x[2]    x[3]    y_in    y_out   t   w[0]    w[1]    w[2]    w[3]
+--------------------------------------------------------------------------------------------------
+1              1        1         1         1         -2         -1        1        -1      1         1         1
+2              1        -1         1         1         0         0        -1        -2      2         0         0
+3              1        1         -1         1         0         0        -1        -3      1         1         -1
+4              1        1         1         -1         0         0        -1        -4      0         0         0
+------------------------------------------------------------------------------------------------------
+epoch#  3
+iteration    x[0]  x[1]  x[2]    x[3]    y_in    y_out   t   w[0]    w[1]    w[2]    w[3]
+--------------------------------------------------------------------------------------------------
+1              1        1         1         1         -4         -1        1        -3      1         1         1
+2              1        -1         1         1         -2         -1        -1        -3      1         1         1
+3              1        1         -1         1         -2         -1        -1        -3      1         1         1
+4              1        1         1         -1         -2         -1        -1        -3      1         1         1
+------------------------------------------------------------------------------------------------------
+epoch#  4
+iteration    x[0]  x[1]  x[2]    x[3]    y_in    y_out   t   w[0]    w[1]    w[2]    w[3]
+--------------------------------------------------------------------------------------------------
+1              1        1         1         1         0         0        1        -2      2         2         2
+2              1        -1         1         1         0         0        -1        -3      3         1         1
+3              1        1         -1         1         0         0        -1        -4      2         2         0
+4              1        1         1         -1         0         0        -1        -5      1         1         1
+------------------------------------------------------------------------------------------------------
+epoch#  5
+iteration    x[0]  x[1]  x[2]    x[3]    y_in    y_out   t   w[0]    w[1]    w[2]    w[3]
+--------------------------------------------------------------------------------------------------
+1              1        1         1         1         -2         -1        1        -4      2         2         2
+2              1        -1         1         1         -2         -1        -1        -4      2         2         2
+3              1        1         -1         1         -2         -1        -1        -4      2         2         2
+4              1        1         1         -1         -2         -1        -1        -4      2         2         2
+------------------------------------------------------------------------------------------------------
+epoch#  6
+iteration    x[0]  x[1]  x[2]    x[3]    y_in    y_out   t   w[0]    w[1]    w[2]    w[3]
+--------------------------------------------------------------------------------------------------
+1              1        1         1         1         2         1        1        -4      2         2         2
+2              1        -1         1         1         -2         -1        -1        -4      2         2         2
+3              1        1         -1         1         -2         -1        -1        -4      2         2         2
+4              1        1         1         -1         -2         -1        -1        -4      2         2         2
+------------------------------------------------------------------------------------------------------
+
+Output (final weight vector)
+[-4, 2, 2, 2]

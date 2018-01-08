@@ -1,0 +1,109 @@
+Input (following lines will be in 'maxnet_input.txt' file) :
+-----------------------------------------------------------------------------
+
+
+m=4
+delta=0.2
+x=0.5,0.8,0.3,0.6
+
+
+Output: [ When python version is below 3.6.4 ]
+------------------------------------------------------------------------------
+
+----------------------------------MAXNET----------------------------------
+Installed python version is :  2 . 7 . 4
+Required python version is : 3.6.4
+Please install python version 3.6.4 or above.
+Exiting .....
+Press any key to exit .
+
+******************************************************************************
+
+Output: [ When python version is 3.6.4 or above and the package 'psutil' is present (if not , it'll be installed if net connection is present ) and total system memory is less than 2 GB ]
+------------------------------------------------------------------------------
+
+----------------------------------MAXNET----------------------------------
+Installed python version is :  3 . 6 . 4
+Required python version is : 3.6.4
+Hence the python compiler meet the system requirement.
+
+
+'psutil' is present there , so continuing to memory check....
+
+Total system memory is : 1836 M
+The system memory does not meet the requirement.
+
+Press any key to exit .
+
+******************************************************************************
+
+Output: [ When python version is 3.6.4 or above and the package 'psutil' is not present, it'll NOT be installed if net connection is NOT present ) ]
+------------------------------------------------------------------------------
+
+----------------------------------MAXNET----------------------------------
+Installed python version is :  3 . 6 . 4
+Required python version is : 3.6.4
+Hence the python compiler meet the system requirement.
+
+
+psutil is not present , so installing it.....
+
+Collecting psutil 
+  Retrying (Retry(total=4, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B7E70>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Retrying (Retry(total=3, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B7BF0>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B7990>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B7C10>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B76B0>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Could not find a version that satisfies the requirement hi (from versions: )
+No matching distribution found for psutil
+
+please connect to internet to install psutil 
+Without psutil library,can not check total physical memory of the system.
+After installing psutil manually or connecting to internet Re-run it .
+
+Press any key to exit .
+
+
+******************************************************************************
+
+Output: [ When python version is 3.6.4 or above and total system memory is greater than 2 GB ( and if you didn't give the input file name via command line argument , it'll ask the input file name at Runtime ) ]
+------------------------------------------------------------------------------
+
+----------------------------------MAXNET----------------------------------
+
+Installed python version is :  3 . 6 . 4
+Required python version is : 3.6.4
+Hence the python compiler meet the system requirement.
+
+'psutil' is present there , so continuing to memory check....
+
+Total system memory is : 3414 M
+Hence the system memory meet the requirement.
+
+The input file structure of input data is given below for example :
+
+BEGIN : file structure
+    m=4
+    delta=0.2
+    x=0.5,0.8,0.3,0.6
+END : file structure
+
+Usage : maxnet.py [input_file_name]
+    'input_file_name' is optional , you can give the 'input_file_name' here 
+
+
+In this program , size of MAXNET  is assumed :  4
+weights :  0.2
+list of patterns :  [0.5, 0.8, 0.3, 0.6] 
+
+epoch ->  1  | y_out ->  [0.5, 0.8, 0.3, 0.6]
+epoch ->  2  | y_out ->  [0.15999999999999992, 0.52, 0, 0.2799999999999999]
+epoch ->  3  | y_out ->  [0, 0.43200000000000005, 0, 0.14399999999999993]
+epoch ->  4  | y_out ->  [0, 0.40320000000000006, 0, 0.057599999999999915]
+epoch ->  5  | y_out ->  [0, 0.3916800000000001, 0, 0]
+winner is unit :  2

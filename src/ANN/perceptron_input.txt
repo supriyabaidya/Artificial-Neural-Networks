@@ -1,0 +1,8 @@
+learning_rate=1
+weights=0,0,0,0
+theta=1
+patterns::true output
+ 1: 1: 1:: 1
+-1: 1: 1::-1
+ 1:-1: 1::-1
+ 1: 1:-1::-1

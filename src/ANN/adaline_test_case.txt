@@ -1,0 +1,154 @@
+Input (following lines will be in 'adaline_input.txt' file) :
+-----------------------------------------------------------------------------
+
+
+learning_rate=0.2
+weights=0.25,0.25,0.25
+patterns::true output
+ 1: 1::-1
+ 1:-1:: 1
+-1: 1::-1
+-1:-1::-1
+
+
+Output: [ When python version is below 3.6.4 ]
+------------------------------------------------------------------------------
+
+----------------------------------ADALINE----------------------------------
+Installed python version is :  2 . 7 . 4
+Required python version is : 3.6.4
+Please install python version 3.6.4 or above.
+Exiting .....
+Press any key to exit .
+
+******************************************************************************
+
+Output: [ When python version is 3.6.4 or above and the package 'psutil' is present (if not , it'll be installed if net connection is present ) and total system memory is less than 2 GB ]
+------------------------------------------------------------------------------
+
+----------------------------------ADALINE----------------------------------
+Installed python version is :  3 . 6 . 4
+Required python version is : 3.6.4
+Hence the python compiler meet the system requirement.
+
+
+'psutil' is present there , so continuing to memory check....
+
+Total system memory is : 1836 M
+The system memory does not meet the requirement.
+
+Press any key to exit .
+
+******************************************************************************
+
+Output: [ When python version is 3.6.4 or above and the package 'psutil' is not present, it'll NOT be installed if net connection is NOT present ) ]
+------------------------------------------------------------------------------
+
+----------------------------------ADALINE----------------------------------
+Installed python version is :  3 . 6 . 4
+Required python version is : 3.6.4
+Hence the python compiler meet the system requirement.
+
+
+psutil is not present , so installing it.....
+
+Collecting psutil 
+  Retrying (Retry(total=4, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B7E70>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Retrying (Retry(total=3, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B7BF0>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B7990>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B7C10>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<pip._vendor.requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x028B76B0>: Failed to establish a new connection:
+ [Errno 11004] getaddrinfo failed',)': /simple/psutil/
+  Could not find a version that satisfies the requirement hi (from versions: )
+No matching distribution found for psutil
+
+please connect to internet to install psutil 
+Without psutil library,can not check total physical memory of the system.
+After installing psutil manually or connecting to internet Re-run it .
+
+Press any key to exit .
+
+
+******************************************************************************
+
+Output: [ When python version is 3.6.4 or above and total system memory is greater than 2 GB ( and if you didn't give the input file name via command line argument , it'll ask the input file name at Runtime ) ]
+------------------------------------------------------------------------------
+
+----------------------------------ADALINE----------------------------------
+
+Installed python version is :  3 . 6 . 4
+Required python version is : 3.6.4
+Hence the python compiler meet the system requirement.
+
+'psutil' is present there , so continuing to memory check....
+
+Total system memory is : 3414 M
+Hence the system memory meet the requirement.
+
+The input file structure of input data is given below for example :
+
+BEGIN : file structure
+    learning_rate=0.2 
+    weights=0.25,0.25,0.25 
+    patterns::true output
+     1: 1::-1
+     1:-1:: 1
+    -1: 1::-1
+    -1:-1::-1
+END : file structure
+
+Usage : adaline.py [input_file_name]
+    'input_file_name' is optional , you can give the 'input_file_name' here 
+
+
+Weights :  [0.25, 0.25, 0.25]
+List of patterns :  [[1, 1], [1, -1], [-1, 1], [-1, -1]]
+true OUTPUT :  [-1, 1, -1, -1] 
+
+learning_rate :  0.2
+
+Starting iteration of ADALINE Algorithm
+
+epoch#  1
+iteration  x[0]          x[1]         x[2]        y_in                   t[i]                  weights[0]                    weights[1]                      weights[2]
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+1              1             1             1             0.75                         -1                         -0.10000000000000003                         -0.10000000000000003                         -0.10000000000000003
+2              1             1             -1             -0.10000000000000003                         1                         0.12                         0.12                         -0.32000000000000006
+3              1             -1             1             -0.32000000000000006                         -1                         -0.015999999999999986                         0.256                         -0.45600000000000007
+4              1             -1             -1             0.18400000000000005                         -1                         -0.2528                         0.4928                         -0.21920000000000003
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Output (y_out)
+[1, -1, -1, 1]
+Target Output (t)
+[-1, 1, -1, -1]
+epoch#  2
+iteration  x[0]          x[1]         x[2]        y_in                   t[i]                  weights[0]                    weights[1]                      weights[2]
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+1              1             1             1             0.020799999999999957                         -1                         -0.45696000000000003                         0.28864                         -0.42336000000000007
+2              1             1             -1             0.25504000000000004                         1                         -0.307968                         0.437632                         -0.5723520000000001
+3              1             -1             1             -1.317952                         -1                         -0.24437760000000003                         0.37404160000000003                         -0.5087616
+4              1             -1             -1             -0.10965760000000002                         -1                         -0.42244608000000006                         0.5521100800000001                         -0.33069312000000006
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Output (y_out)
+[1, 1, -1, -1]
+Target Output (t)
+[-1, 1, -1, -1]
+epoch#  3
+iteration  x[0]          x[1]         x[2]        y_in                   t[i]                  weights[0]                    weights[1]                      weights[2]
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+1              1             1             1             -0.20102912000000006                         -1                         -0.5822402560000001                         0.39231590400000005                         -0.4904872960000001
+2              1             1             -1             0.30056294400000005                         1                         -0.44235284480000003                         0.5322033152000001                         -0.6303747072000001
+3              1             -1             1             -1.6049308672000002                         -1                         -0.32136667135999997                         0.41121714176                         -0.50938853376
+4              1             -1             -1             -0.22319527935999994                         -1                         -0.476727615488                         0.5665780858880001                         -0.354027589632
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Output (y_out)
+[-1, 1, -1, -1]
+Target Output (t)
+[-1, 1, -1, -1]
