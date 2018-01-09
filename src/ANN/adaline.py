@@ -26,33 +26,62 @@ print('----------------------------------ADALINE--------------------------------
 import subprocess
 import socket
 import sys
-import msvcrt
+import platform
+try:
+    import msvcrt   # msvcrt is not present any other O.S than windows
+except ImportError:
+    pass
+
 ## END : import statements for CHECKING
 
+# O.S checking
+print('\nO.S checking :')
+print('---------------------------------------------------------')
+required_os='Windows'
+installed_os=platform.system()  # platform.system() gives the name of installed O.S , for eg. Windows or Linux etc
+
+print('Installed O.S is : ',installed_os)
+print('Installed O.S is : ',installed_os,file=output_file)
+print('Required O.S is : ',required_os)
+print('Required O.S is : ',required_os,file=output_file)
+
+if installed_os==required_os:
+    print('Hence the Installed O.S meet the system requirement.\n')
+    print('Hence the Installed O.S meet the system requirement.\n',file=output_file)
+else:
+    print('Hence the Installed O.S does not meet the system requirement.\n\nPlease run it onWindows machine.')
+    print('Hence the Installed O.S does not meet the system requirement.\n\nPlease run it onWindows machine.',file=output_file)
+    output_file.close()
+    sys.exit()
+print('****************************************')
+
+# python version checking
+print('\nPython version checking :')
+print('---------------------------------------------------------')
 required_python_version=(3,6,4)
 installed_python_version=sys.version_info   #sys.version_info gives the installed python version
 
+print('Installed python version is : ',installed_python_version[0],'.',installed_python_version[1],'.',installed_python_version[2])
+print('Installed python version is : ',installed_python_version[0],'.',installed_python_version[1],'.',installed_python_version[2],file=output_file)
+print('Required python version is : ',required_python_version[0],'.',required_python_version[1],'.',required_python_version[2],'.')
+print('Required python version is : ',required_python_version[0],'.',required_python_version[1],'.',required_python_version[2],'.',file=output_file)
+    
 if installed_python_version[0]>=required_python_version[0] and installed_python_version[1]>=required_python_version[1] and installed_python_version[2]>=required_python_version[2]: # python version checking
-    print('Installed python version is : ',installed_python_version[0],'.',installed_python_version[1],'.',installed_python_version[2])
-    print('Installed python version is : ',installed_python_version[0],'.',installed_python_version[1],'.',installed_python_version[2],file=output_file)
-    print('Required python version is : 3.6.4')
-    print('Required python version is : 3.6.4',file=output_file)
     print('Hence the python compiler meet the system requirement.\n')
     print('Hence the python compiler meet the system requirement.\n',file=output_file)
 else:
-    print('Installed python version is : ',installed_python_version)
-    print('Installed python version is : ',installed_python_version,file=output_file)
-    print('Required python version is : 3.6.4 .')
-    print('Required python version is : 3.6.4 .',file=output_file)
     print('Please install python version 3.6.4 or above.')
     print('Please install python version 3.6.4 or above.',file=output_file)
-    print('Exiting .....')
-    print('Exiting .....',file=output_file)
     print('\nPress any key to exit .')
     print('\nPress any key to exit .',file=output_file)
     msvcrt.getch()    # getch() is used to hold(for user to read the instruction before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
+    output_file.close()
     sys.exit()
+print('****************************************')
 
+# Available system memory checking
+print('\nAvailable system memory checking :')
+print('---------------------------------------------------------')
 
 def is_connected_to_internet(): # method for checking the internet connection
     try:
@@ -86,12 +115,14 @@ except ImportError: # checking 'psutil' package is present or not
         print('psutil is not present , so installing it.....')
         print('psutil is not present , so installing it.....',file=output_file)
         subprocess.call('python.exe -m pip install psutil',shell=True)  # installing the 'psutil' package
+        import psutil       # import 'psutil' after installing it
     else:
         print('please connect to internet to install psutil \nWithout psutil library,can not check total physical memory of the system.\nAfter installing psutil manually or connecting to internet Re-run it .')
         print('please connect to internet to install psutil \nWithout psutil library,can not check total physical memory of the system.\nAfter installing psutil manually or connecting to internet Re-run it .',file=output_file)
         print('\nPress any key to exit .')
         print('\nPress any key to exit .',file=output_file)
         msvcrt.getch()    # getch() is used to hold(for user to read the instruction before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
+        output_file.close()
         sys.exit()
     
 else:
@@ -99,22 +130,26 @@ else:
     print('\'psutil\' is present there , so continuing to memory check....\n',file=output_file)
 ######updated 'psutil' checking######
 
-available_system_memory = int(psutil.virtual_memory().available / (1024 ** 2)) # calculating the available system memory
-print('Available system memory is :',available_system_memory,'M')
-print('Available system memory is :',available_system_memory,'M',file=output_file)
-
 required_system_memory=100   # required system memory is 100 M (assumption)
+available_system_memory = int(psutil.virtual_memory().available / (1024 ** 2)) # calculating the available system memory
+print('Available(free) system memory is : ',available_system_memory,'M')
+print('Available(free) system memory is : ',available_system_memory,'M',file=output_file)
+print('Required free system memory is : ',required_system_memory,' M')
+print('Required free system memory is : ',required_system_memory,' M',file=output_file)
+
 if available_system_memory>required_system_memory:
-    print('Hence the system memory meet the requirement.\n')
-    print('Hence the system memory meet the requirement.\n',file=output_file)
+    print('Hence the free system memory meet the requirement.\n')
+    print('Hence the free system memory meet the requirement.\n',file=output_file)
 else:
-    print('The system memory does not meet the requirement.\n')
-    print('The system memory does not meet the requirement.\n',file=output_file)
+    print('The free system memory does not meet the requirement.\n')
+    print('The free system memory does not meet the requirement.\n',file=output_file)
     print('\nPress any key to exit .')
     print('\nPress any key to exit .',file=output_file)
     msvcrt.getch()    # getch() is used to hold(for user to read the instruction before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
+    output_file.close()
     sys.exit()
-    
+print('****************************************')
+
 ###END : CHECKING Environment
 
 #BEGIN : main ADALINE Algorithm and Code (variables name used in code are single quoted in Algorithm and superscript i of X is written as X_i) :
@@ -153,7 +188,8 @@ if sys.argv.__len__()==1:
     \'input_file_name\' is optional , you can give the \'input_file_name\' here \n')
     print('Usage : adaline.py [input_file_name]\n\
     \'input_file_name\' is optional , you can give the \'input_file_name\' here \n',file=output_file)
-    file_name=input('Enter the \'input_file_name\' now :')  # taking the 'input_file_name' to 'file_name' manually
+    file_name='adaline_input.txt'
+#     file_name=input('Enter the \'input_file_name\' now :')  # taking the 'input_file_name' to 'file_name' manually
 else:
     file_name=sys.argv[1]   # storing the 'input_file_name' to 'file_name' from command line argument
 
@@ -177,6 +213,7 @@ def input_from_file(filename):  # method/function for taking input from input fi
         
         f.close()
         #END : file line counting
+        
         #BEGIN : taking input from file
         f=open(filename)
         line_number=0
@@ -191,6 +228,7 @@ def input_from_file(filename):  # method/function for taking input from input fi
                     at line ',line_number+1,file=output_file)
                     print('Press any key to exit .')
                     msvcrt.getch()
+                    output_file.close()
                     sys.exit()
                 break
             line_number+=1
@@ -218,33 +256,45 @@ def input_from_file(filename):  # method/function for taking input from input fi
         f.close();    
     except FileNotFoundError:
         traceback.print_exc()
+        print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
         msvcrt.getch()
+        output_file.close()
         sys.exit()
     except EOFError:
         traceback.print_exc()
+        print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
         msvcrt.getch()
+        output_file.close()
         sys.exit()
     except FloatingPointError:
         traceback.print_exc()
+        print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
         msvcrt.getch()
+        output_file.close()
         sys.exit()
     except IOError:
         traceback.print_exc()
+        print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
         msvcrt.getch()
+        output_file.close()
         sys.exit()
     except PermissionError:
         traceback.print_exc()
+        print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
         msvcrt.getch()
+        output_file.close()
         sys.exit()
     except ValueError:
         traceback.print_exc()
+        print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
         msvcrt.getch()
+        output_file.close()
         sys.exit()
 
 #END : taking input from file
@@ -287,13 +337,14 @@ print('learning_rate : ',learning_rate,file=output_file)
 print('\nStarting iteration of ADALINE Algorithm\n')
 print('\nStarting iteration of ADALINE Algorithm\n',file=output_file)
 while not terminating:
-    print ('epoch# ',epoch+1)
-    print ('epoch# ',epoch+1,file=output_file)
+    print('epoch# ',epoch+1)
+    print('epoch# ',epoch+1,file=output_file)
     
-    print ('iteration    x[0]        x[1]        x[2]        y_in          t[i]        weights[0]    weights[1]    weights[2]')
-    print ('iteration    x[0]        x[1]        x[2]        y_in          t[i]        weights[0]    weights[1]    weights[2]',file=output_file)
-    print ('-------------------------------------------------------------------------------------------------------------------------------------------------------------')
-    print ('-------------------------------------------------------------------------------------------------------------------------------------------------------------',file=output_file)
+    print('Iteration    X[0]        X[1]        X[2]        Y_in        T[i]        Weights[0]    Weights[1]    Weights[2]')
+    print('Iteration    X[0]        X[1]        X[2]        Y_in        T[i]        Weights[0]    Weights[1]    Weights[2]',file=output_file)
+#     print ('iteration    x[0]        x[1]        x[2]        y_in          t[i]        weights[0]    weights[1]    weights[2]',file=output_file)
+    print('-------------------------------------------------------------------------------------------------------------------------------------------------------------')
+    print('-------------------------------------------------------------------------------------------------------------------------------------------------------------',file=output_file)
 # step 4. For each bipolar training pair s:t, do steps 5 to 7.
     NetInput=[]
     for i in range(0,4):    #for each training pair s:t
@@ -320,7 +371,7 @@ while not terminating:
         for j in range(0,3):    # for each input unit i
             y_in+=x[j]*weights[j]
         
-        y_in=float(format(y_in,'.2f'))    # formatting up to 4 decimal
+#         y_in=float(format(y_in,'.2f'))    # formatting up to 2 decimal
         NetInput.append(y_in);
 ###END : step 6.
 
@@ -331,13 +382,14 @@ while not terminating:
 #### TODO write "weights Adjustment" code here
         for j in range(0,3):    # for each input unit i
             weights[j]+=learning_rate*(true_output[i]-y_in)*x[j]
-            weights[j]=float(format(weights[j],'.2f')) # formatting up to 4 decimal point 
         
-        print ((i+1),'          ',x[0],'          ',x[1],'          ',x[2],'        ',y_in,'        ',true_output[i],'        ',weights[0],'        ',weights[1],'        ',weights[2])
-        print ((i+1),'          ',x[0],'          ',x[1],'          ',x[2],'        ',y_in,'        ',true_output[i],'        ',weights[0],'        ',weights[1],'        ',weights[2],file=output_file)
+        print((i+1),'             ',x[0],'          ',x[1],'          ',x[2],'          ',format(y_in,'.2f'),'        ',true_output[i],'          ',format(weights[0],'.2f'),'          ',format(weights[1],'.2f'),'          ',format(weights[2],'.2f'))
+        output_file.write(str(i+1)+'             '+str(x[0])+'          '+str(x[1])+'          '+str(x[2])+'          '+str(format(y_in,'.2f'))+'        '+str(true_output[i])+'          '+str(format(weights[0],'.2f'))+'          '+str(format(weights[1],'.2f'))+'          '+str(format(weights[2],'.2f'))+'\n')
+#         print((i+1),'             )+'x[0],'          ',x[1],''+str(        ',x[2],'          ',y_in,'        ',true_output[i],'          ',weights[0],'          ',weights[1],'          ',weights[2],file=output_file)
+#         print ((i+1),'          ',x[0],'          ',x[1],'          ',x[2],'        ',y_in,'        ',true_output[i],'        ',weights[0],'        ',weights[1],'        ',weights[2],file=output_file)
 ###END : step 7.
-    print ('-------------------------------------------------------------------------------------------------------------------------------------------------------------')
-    print ('-------------------------------------------------------------------------------------------------------------------------------------------------------------',file=output_file)
+    print('-------------------------------------------------------------------------------------------------------------------------------------------------------------')
+    print('-------------------------------------------------------------------------------------------------------------------------------------------------------------',file=output_file)
     
 # step 8. Compute output (y_out) from net input
 ###BEGIN : step 8.
@@ -349,14 +401,14 @@ while not terminating:
         else:
             y_out.append(-1)
     
-    print ('\nOutput (y_out)')
-    print ('\nOutput (y_out)',file=output_file)
-    print (y_out)
-    print (y_out,file=output_file)
-    print ('Target Output (t)')
-    print ('Target Output (t)',file=output_file)
-    print (true_output)
-    print (true_output,file=output_file)
+    print('\nOutput (y_out)')
+    print('\nOutput (y_out)',file=output_file)
+    print(y_out)
+    print(y_out,file=output_file)
+    print('Target Output (t)')
+    print('Target Output (t)',file=output_file)
+    print(true_output)
+    print(true_output,file=output_file)
 ###END : step 8.
     
 # step 9. CHECKING terminating condition
