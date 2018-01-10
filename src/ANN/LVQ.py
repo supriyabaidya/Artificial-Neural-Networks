@@ -1,8 +1,14 @@
 '''
-Created on 26-Dec-2017
+Created on 02-Jan-2018
 
-@author: TomHardy
-'''
+@author: Supriya Baidya
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+version 3.0 (final release)
+ 
+ LVQ :
+
+ Algorithm of LVQ is given below along with the python code.
+ '''
 import copy
 
 #there are 5 Training vectors s0 to s4 ,belong to 2 clusters c0,c1

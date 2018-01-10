@@ -3,7 +3,7 @@ Created on 02-Jan-2018
 
 @author: Supriya Baidya
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-version 2.7 (final release)
+version 3.0 (final release)
  
  ADALINE :
  The ADALINE (Adaptive Linear Neuron) is a single OUTPUT-UNIT neural net with several INPUT-UNITs. One of the INPUT-UNIT act as bias and is permanently fixed at '1'. An ADALINE is trained with the help of the delta, or LMS,or Widrow-Hoff learning rule.
@@ -74,8 +74,8 @@ else:
     print('Please install python version 3.6.4 or above.',file=output_file)
     print('\nPress any key to exit .')
     print('\nPress any key to exit .',file=output_file)
-    msvcrt.getch()    # getch() is used to hold(for user to read the instruction before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
     output_file.close()
+    msvcrt.getch()    # getch() is used to hold(for user to read the instruction before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
     sys.exit()
 print('****************************************')
 
@@ -121,8 +121,8 @@ except ImportError: # checking 'psutil' package is present or not
         print('please connect to internet to install psutil \nWithout psutil library,can not check total physical memory of the system.\nAfter installing psutil manually or connecting to internet Re-run it .',file=output_file)
         print('\nPress any key to exit .')
         print('\nPress any key to exit .',file=output_file)
-        msvcrt.getch()    # getch() is used to hold(for user to read the instruction before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
         output_file.close()
+        msvcrt.getch()    # getch() is used to hold(for user to read the instruction before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
         sys.exit()
     
 else:
@@ -145,8 +145,8 @@ else:
     print('The free system memory does not meet the requirement.\n',file=output_file)
     print('\nPress any key to exit .')
     print('\nPress any key to exit .',file=output_file)
-    msvcrt.getch()    # getch() is used to hold(for user to read the instruction before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
     output_file.close()
+    msvcrt.getch()    # getch() is used to hold(for user to read the instruction before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
     sys.exit()
 print('****************************************')
 
@@ -188,8 +188,8 @@ if sys.argv.__len__()==1:
     \'input_file_name\' is optional , you can give the \'input_file_name\' here \n')
     print('Usage : adaline.py [input_file_name]\n\
     \'input_file_name\' is optional , you can give the \'input_file_name\' here \n',file=output_file)
-    file_name='adaline_input.txt'
-#     file_name=input('Enter the \'input_file_name\' now :')  # taking the 'input_file_name' to 'file_name' manually
+#     file_name='adaline_input.txt'
+    file_name=input('Enter the \'input_file_name\' now :')  # taking the 'input_file_name' to 'file_name' manually
 else:
     file_name=sys.argv[1]   # storing the 'input_file_name' to 'file_name' from command line argument
 
@@ -227,8 +227,9 @@ def input_from_file(filename):  # method/function for taking input from input fi
                     print('Error : Wrong Input Format of the input file \n\
                     at line ',line_number+1,file=output_file)
                     print('Press any key to exit .')
-                    msvcrt.getch()
+                    print('Press any key to exit .',file=output_file)
                     output_file.close()
+                    msvcrt.getch()
                     sys.exit()
                 break
             line_number+=1
@@ -258,43 +259,49 @@ def input_from_file(filename):  # method/function for taking input from input fi
         traceback.print_exc()
         print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
-        msvcrt.getch()
+        print('Press any key to exit .',file=output_file)
         output_file.close()
+        msvcrt.getch()
         sys.exit()
     except EOFError:
         traceback.print_exc()
         print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
-        msvcrt.getch()
+        print('Press any key to exit .',file=output_file)
         output_file.close()
+        msvcrt.getch()
         sys.exit()
     except FloatingPointError:
         traceback.print_exc()
         print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
-        msvcrt.getch()
+        print('Press any key to exit .',file=output_file)
         output_file.close()
+        msvcrt.getch()
         sys.exit()
     except IOError:
         traceback.print_exc()
         print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
-        msvcrt.getch()
+        print('Press any key to exit .',file=output_file)
         output_file.close()
+        msvcrt.getch()
         sys.exit()
     except PermissionError:
         traceback.print_exc()
         print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
-        msvcrt.getch()
+        print('Press any key to exit .',file=output_file)
         output_file.close()
+        msvcrt.getch()
         sys.exit()
     except ValueError:
         traceback.print_exc()
         print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
-        msvcrt.getch()
+        print('Press any key to exit .',file=output_file)
         output_file.close()
+        msvcrt.getch()
         sys.exit()
 
 #END : taking input from file

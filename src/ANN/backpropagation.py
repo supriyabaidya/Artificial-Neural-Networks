@@ -1,8 +1,14 @@
 '''
-Created on 25-Dec-2017
+Created on 02-Jan-2018
 
-@author: TomHardy
-'''
+@author: Supriya Baidya
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+version 3.0 (final release)
+ 
+ Backpropagation :
+
+ Algorithm of Backpropagation is given below along with the python code.
+ '''
 import math
 
 def inclusive_range(start_layer,end_layer):

@@ -3,7 +3,7 @@ Created on 02-Jan-2018
 
 @author: Supriya Baidya
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-version 2.5 (final release)
+version 3.0 (final release)
  
  MAXNET :
  The MAXNET is a simplest artificial neural net that works on the principle of competition. It is fully connected network with symmetric interconnections and self-loops.
@@ -35,33 +35,62 @@ print('----------------------------------MAXNET---------------------------------
 import subprocess
 import socket
 import sys
-import msvcrt
+import platform
+try:
+    import msvcrt   # msvcrt is not present any other O.S than windows
+except ImportError:
+    pass
+
 ## END : import statements for CHECKING
 
+# O.S checking
+print('\nO.S checking :')
+print('---------------------------------------------------------')
+required_os='Windows'
+installed_os=platform.system()  # platform.system() gives the name of installed O.S , for eg. Windows or Linux etc
+
+print('Installed O.S is : ',installed_os)
+print('Installed O.S is : ',installed_os,file=output_file)
+print('Required O.S is : ',required_os)
+print('Required O.S is : ',required_os,file=output_file)
+
+if installed_os==required_os:
+    print('Hence the Installed O.S meet the system requirement.\n')
+    print('Hence the Installed O.S meet the system requirement.\n',file=output_file)
+else:
+    print('Hence the Installed O.S does not meet the system requirement.\n\nPlease run it onWindows machine.')
+    print('Hence the Installed O.S does not meet the system requirement.\n\nPlease run it onWindows machine.',file=output_file)
+    output_file.close()
+    sys.exit()
+print('****************************************')
+
+# python version checking
+print('\nPython version checking :')
+print('---------------------------------------------------------')
 required_python_version=(3,6,4)
 installed_python_version=sys.version_info   #sys.version_info gives the installed python version
 
+print('Installed python version is : ',installed_python_version[0],'.',installed_python_version[1],'.',installed_python_version[2])
+print('Installed python version is : ',installed_python_version[0],'.',installed_python_version[1],'.',installed_python_version[2],file=output_file)
+print('Required python version is : ',required_python_version[0],'.',required_python_version[1],'.',required_python_version[2],'.')
+print('Required python version is : ',required_python_version[0],'.',required_python_version[1],'.',required_python_version[2],'.',file=output_file)
+    
 if installed_python_version[0]>=required_python_version[0] and installed_python_version[1]>=required_python_version[1] and installed_python_version[2]>=required_python_version[2]: # python version checking
-    print('Installed python version is : ',installed_python_version[0],'.',installed_python_version[1],'.',installed_python_version[2])
-    print('Installed python version is : ',installed_python_version[0],'.',installed_python_version[1],'.',installed_python_version[2],file=output_file)
-    print('Required python version is : 3.6.4')
-    print('Required python version is : 3.6.4',file=output_file)
     print('Hence the python compiler meet the system requirement.\n')
     print('Hence the python compiler meet the system requirement.\n',file=output_file)
 else:
-    print('Installed python version is : ',installed_python_version)
-    print('Installed python version is : ',installed_python_version,file=output_file)
-    print('Required python version is : 3.6.4 .')
-    print('Required python version is : 3.6.4 .',file=output_file)
     print('Please install python version 3.6.4 or above.')
     print('Please install python version 3.6.4 or above.',file=output_file)
-    print('Exiting .....')
-    print('Exiting .....',file=output_file)
-    print('Press any key to exit .')
-    print('Press any key to exit .',file=output_file)
+    print('\nPress any key to exit .')
+    print('\nPress any key to exit .',file=output_file)
+    output_file.close()
     msvcrt.getch()    # getch() is used to hold(for user to read the instruction before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
     sys.exit()
+print('****************************************')
 
+# Available system memory checking
+print('\nAvailable system memory checking :')
+print('---------------------------------------------------------')
 
 def is_connected_to_internet(): # method for checking the internet connection
     try:
@@ -72,6 +101,7 @@ def is_connected_to_internet(): # method for checking the internet connection
     return False
 
 ######previous 'psutil' checking######
+
 # if not pkgutil.find_loader("psutil"):   # checking 'psutil' package is present or not
 #     if is_connected_to_internet():  # checking the internet connection is present or not
 #         print('psutil is not present , so installing it.....')
@@ -83,9 +113,10 @@ def is_connected_to_internet(): # method for checking the internet connection
 # else:
 #     print('\'psutil\' is present there , so continuing to memory check....\n')
 #     print('\'psutil\' is present there , so continuing to memory check....\n',file=output_file)
+
 ######previous 'psutil' checking######
 
-######update 'psutil' checking######
+######updated 'psutil' checking######
 try:
     import psutil
 except ImportError: # checking 'psutil' package is present or not
@@ -93,11 +124,13 @@ except ImportError: # checking 'psutil' package is present or not
         print('psutil is not present , so installing it.....')
         print('psutil is not present , so installing it.....',file=output_file)
         subprocess.call('python.exe -m pip install psutil',shell=True)  # installing the 'psutil' package
+        import psutil       # import 'psutil' after installing it
     else:
         print('please connect to internet to install psutil \nWithout psutil library,can not check total physical memory of the system.\nAfter installing psutil manually or connecting to internet Re-run it .')
         print('please connect to internet to install psutil \nWithout psutil library,can not check total physical memory of the system.\nAfter installing psutil manually or connecting to internet Re-run it .',file=output_file)
         print('\nPress any key to exit .')
         print('\nPress any key to exit .',file=output_file)
+        output_file.close()
         msvcrt.getch()    # getch() is used to hold(for user to read the instruction before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
         sys.exit()
     
@@ -106,21 +139,25 @@ else:
     print('\'psutil\' is present there , so continuing to memory check....\n',file=output_file)
 ######updated 'psutil' checking######
 
-available_system_memory = int(psutil.virtual_memory().available / (1024 ** 2)) # calculating the available system memory
-print('Available system memory is :',available_system_memory,'M')
-print('Available system memory is :',available_system_memory,'M',file=output_file)
-
 required_system_memory=100   # required system memory is 100 M (assumption)
+available_system_memory = int(psutil.virtual_memory().available / (1024 ** 2)) # calculating the available system memory
+print('Available(free) system memory is : ',available_system_memory,'M')
+print('Available(free) system memory is : ',available_system_memory,'M',file=output_file)
+print('Required free system memory is : ',required_system_memory,' M')
+print('Required free system memory is : ',required_system_memory,' M',file=output_file)
+
 if available_system_memory>required_system_memory:
-    print('Hence the system memory meet the requirement.\n')
-    print('Hence the system memory meet the requirement.\n',file=output_file)
+    print('Hence the free system memory meet the requirement.\n')
+    print('Hence the free system memory meet the requirement.\n',file=output_file)
 else:
-    print('The system memory does not meet the requirement.\n')
-    print('The system memory does not meet the requirement.\n',file=output_file)
+    print('The free system memory does not meet the requirement.\n')
+    print('The free system memory does not meet the requirement.\n',file=output_file)
     print('\nPress any key to exit .')
     print('\nPress any key to exit .',file=output_file)
+    output_file.close()
     msvcrt.getch()    # getch() is used to hold(for user to read the instruction before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
     sys.exit()
+print('****************************************')
 
 ###END : CHECKING Environment
 
@@ -190,6 +227,8 @@ def input_from_file(filename):  # method/function for taking input from input fi
                     print('Error : Wrong Input Format of the input file \n\
                     at line ',line_number+1,file=output_file)
                     print('Press any key to exit .')
+                    print('Press any key to exit .',file=output_file)
+                    output_file.close()
                     msvcrt.getch()
                     sys.exit()
                 break
@@ -208,32 +247,50 @@ def input_from_file(filename):  # method/function for taking input from input fi
         f.close();    
     except FileNotFoundError:
         traceback.print_exc()
+        print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
+        print('Press any key to exit .',file=output_file)
+        output_file.close()
         msvcrt.getch()
         sys.exit()
     except EOFError:
         traceback.print_exc()
+        print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
+        print('Press any key to exit .',file=output_file)
+        output_file.close()
         msvcrt.getch()
         sys.exit()
     except FloatingPointError:
         traceback.print_exc()
+        print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
+        print('Press any key to exit .',file=output_file)
+        output_file.close()
         msvcrt.getch()
         sys.exit()
     except IOError:
         traceback.print_exc()
+        print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
+        print('Press any key to exit .',file=output_file)
+        output_file.close()
         msvcrt.getch()
         sys.exit()
     except PermissionError:
         traceback.print_exc()
+        print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
+        print('Press any key to exit .',file=output_file)
+        output_file.close()
         msvcrt.getch()
         sys.exit()
     except ValueError:
         traceback.print_exc()
+        print(traceback.format_exc(),file=output_file)
         print('Press any key to exit .')
+        print('Press any key to exit .',file=output_file)
+        output_file.close()
         msvcrt.getch()
         sys.exit()
 
@@ -281,16 +338,16 @@ while True:
         else:
             y_out.append(0)
     
-    print ('epoch -> ',epoch,' | y_out -> ',y_out)
-    print ('epoch -> ',epoch,' | y_out -> ',y_out,file=output_file)
+    print('epoch -> ',epoch,' | y_out -> ',y_out)
+    print('epoch -> ',epoch,' | y_out -> ',y_out,file=output_file)
 ###END : step 2.
 
 # step 3. CHECKING terminating condition
 ###BEGIN : step 3.
 #### TODO write "CHECKING" code here
     if len(winner_takes_all(y_out))==1:
-        print ('winner is unit : ',winner_takes_all(y_out)[0]+1)       # '+1' as the index is always stated from 0
-        print ('winner is unit : ',winner_takes_all(y_out)[0]+1,file=output_file)
+        print('winner is unit : ',winner_takes_all(y_out)[0]+1)       # '+1' as the index is always stated from 0
+        print('winner is unit : ',winner_takes_all(y_out)[0]+1,file=output_file)
         break
 ###END : step 3.
 
