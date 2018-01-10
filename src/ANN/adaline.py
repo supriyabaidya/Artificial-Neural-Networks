@@ -342,9 +342,8 @@ while not terminating:
     
     print('Iteration    X[0]        X[1]        X[2]        Y_in        T[i]        Weights[0]    Weights[1]    Weights[2]')
     print('Iteration    X[0]        X[1]        X[2]        Y_in        T[i]        Weights[0]    Weights[1]    Weights[2]',file=output_file)
-#     print ('iteration    x[0]        x[1]        x[2]        y_in          t[i]        weights[0]    weights[1]    weights[2]',file=output_file)
-    print('-------------------------------------------------------------------------------------------------------------------------------------------------------------')
-    print('-------------------------------------------------------------------------------------------------------------------------------------------------------------',file=output_file)
+    print('--------------------------------------------------------------------------------------------------------------')
+    print('--------------------------------------------------------------------------------------------------------------',file=output_file)
 # step 4. For each bipolar training pair s:t, do steps 5 to 7.
     NetInput=[]
     for i in range(0,4):    #for each training pair s:t
@@ -371,7 +370,6 @@ while not terminating:
         for j in range(0,3):    # for each input unit i
             y_in+=x[j]*weights[j]
         
-#         y_in=float(format(y_in,'.2f'))    # formatting up to 2 decimal
         NetInput.append(y_in);
 ###END : step 6.
 
@@ -384,13 +382,10 @@ while not terminating:
             weights[j]+=learning_rate*(true_output[i]-y_in)*x[j]
         
         print((i+1),'             ',x[0],'          ',x[1],'          ',x[2],'          ',format(y_in,'.2f'),'        ',true_output[i],'          ',format(weights[0],'.2f'),'          ',format(weights[1],'.2f'),'          ',format(weights[2],'.2f'))
-        output_file.write(str(i+1)+'             '+str(x[0])+'          '+str(x[1])+'          '+str(x[2])+'          '+str(format(y_in,'.2f'))+'        '+str(true_output[i])+'          '+str(format(weights[0],'.2f'))+'          '+str(format(weights[1],'.2f'))+'          '+str(format(weights[2],'.2f'))+'\n')
-#         print((i+1),'             )+'x[0],'          ',x[1],''+str(        ',x[2],'          ',y_in,'        ',true_output[i],'          ',weights[0],'          ',weights[1],'          ',weights[2],file=output_file)
-#         print ((i+1),'          ',x[0],'          ',x[1],'          ',x[2],'        ',y_in,'        ',true_output[i],'        ',weights[0],'        ',weights[1],'        ',weights[2],file=output_file)
+        print((i+1),'             ',x[0],'          ',x[1],'          ',x[2],'          ',format(y_in,'.2f'),'        ',true_output[i],'          ',format(weights[0],'.2f'),'          ',format(weights[1],'.2f'),'          ',format(weights[2],'.2f'),file=output_file)
 ###END : step 7.
-    print('-------------------------------------------------------------------------------------------------------------------------------------------------------------')
-    print('-------------------------------------------------------------------------------------------------------------------------------------------------------------',file=output_file)
-    
+    print('--------------------------------------------------------------------------------------------------------------')
+    print('--------------------------------------------------------------------------------------------------------------',file=output_file)    
 # step 8. Compute output (y_out) from net input
 ###BEGIN : step 8.
 #### TODO write "Compute output (y_out)" code here
