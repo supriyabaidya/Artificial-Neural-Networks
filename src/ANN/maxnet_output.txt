@@ -1,0 +1,40 @@
+----------------------------------MAXNET----------------------------------
+
+Installed O.S is :  Windows
+Required O.S is :  Windows
+Hence the Installed O.S meet the system requirement.
+
+Installed python version is :  3 . 6 . 4
+Required python version is :  3 . 6 . 4 .
+Hence the python compiler meet the system requirement.
+
+'psutil' is present there , so continuing to memory check....
+
+Available(free) system memory is :  5522 M
+Required free system memory is :  100  M
+Hence the free system memory meet the requirement.
+
+The input file structure of input data is given below for example :
+
+BEGIN : file structure
+    m=4
+    delta=0.2
+    x=0.5,0.8,0.3,0.6
+END : file structure
+
+Usage : maxnet.py [input_file_name]
+    'input_file_name' is optional , you can give the 'input_file_name' here 
+
+Enter the 'input_file_name' now :
+
+
+In this program , size of MAXNET  is assumed :  4
+weights :  0.2
+list of patterns :  [0.5, 0.8, 0.3, 0.6] 
+
+epoch ->  1  | y_out ->  [0.5, 0.8, 0.3, 0.6]
+epoch ->  2  | y_out ->  [0.15999999999999992, 0.52, 0, 0.2799999999999999]
+epoch ->  3  | y_out ->  [0, 0.43200000000000005, 0, 0.14399999999999993]
+epoch ->  4  | y_out ->  [0, 0.40320000000000006, 0, 0.057599999999999915]
+epoch ->  5  | y_out ->  [0, 0.3916800000000001, 0, 0]
+winner is unit :  2

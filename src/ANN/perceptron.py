@@ -9,7 +9,8 @@ version 3.0 (final release)
  
  Algorithm of ADALINE is given below along with the python code.
  '''
- 
+from __future__ import print_function   # for print function with the file parameter , otherwise shows viable error , though without this import statement program runs fine
+
 print('----------------------------------PERCEPTRON--------------------------------------')
 #### storing every Output to a file
 output_file=open('perceptron_output.txt', 'w')
@@ -194,8 +195,9 @@ if sys.argv.__len__()==1:
     \'input_file_name\' is optional , you can give the \'input_file_name\' here \n')
     print('Usage : perceptron.py [input_file_name]\n\
     \'input_file_name\' is optional , you can give the \'input_file_name\' here \n',file=output_file)
-#     file_name='perceptron_input.txt'
+#    file_name='perceptron_input.txt'
     file_name=input('Enter the \'input_file_name\' now :')  # taking the 'input_file_name' to 'file_name' manually
+    print('Enter the \'input_file_name\' now :\n',file=output_file)
 else:
     file_name=sys.argv[1]   # storing the 'input_file_name' to 'file_name' from command line argument
 
@@ -357,8 +359,8 @@ while not stopCriterion:
     
     print('iteration    x[0]        x[1]        x[2]        x[3]        y_in        y_out            true_output            w[0]        w[1]        w[2]        w[3]')
     print('iteration    x[0]        x[1]        x[2]        x[3]        y_in        y_out            true_output            w[0]        w[1]        w[2]        w[3]',file=output_file)
-    print('--------------------------------------------------------------------------------------------------------------------------------------------------')
-    print('--------------------------------------------------------------------------------------------------------------------------------------------------',file=output_file)
+    print('-------------------------------------------------------------------------------------------------------------------------------------------------------')
+    print('-------------------------------------------------------------------------------------------------------------------------------------------------------',file=output_file)
 # step 3. For each trainig pair s:t , do steps 4 to 6.
     Output=[]
     for i in range(0,4):    #for each training data i , where 'i' is the part 's' of pair s:t
@@ -411,11 +413,11 @@ while not stopCriterion:
             for j in range(0,4):    # for each unit j
                 weights[j]+=learning_rate*true_output[i]*x[j]
         
-        print(i+1,'             ',x[0],'             ',x[1],'            ',x[2],'         ',x[3],'        ',y_in,'         ',y_out,'                      ',true_output[i],'                   ',weights[0],'           ',weights[1],'           ',weights[2],'          ',weights[3])
-        print(i+1,'             ',x[0],'             ',x[1],'            ',x[2],'         ',x[3],'        ',y_in,'         ',y_out,'                      ',true_output[i],'                   ',weights[0],'           ',weights[1],'           ',weights[2],'          ',weights[3],file=output_file)
+        print(i+1,'           ',x[0],'          ',x[1],'         ',x[2],'         ',x[3],'        ',y_in,'         ',y_out,'                ',true_output[i],'                ',weights[0],'          ',weights[1],'         ',weights[2],'        ',weights[3])
+        print(i+1,'           ',x[0],'          ',x[1],'         ',x[2],'         ',x[3],'        ',y_in,'         ',y_out,'                ',true_output[i],'                ',weights[0],'          ',weights[1],'         ',weights[2],'        ',weights[3],file=output_file)
 ###END : step 7.
-    print('--------------------------------------------------------------------------------------------------------------------------------------------------') 
-    print('--------------------------------------------------------------------------------------------------------------------------------------------------',file=output_file)
+    print('-------------------------------------------------------------------------------------------------------------------------------------------------------') 
+    print('-------------------------------------------------------------------------------------------------------------------------------------------------------',file=output_file)
 # step 8. CHECKING terminating condition
 ###BEGIN : step 8.
 #### TODO write "CHECKING" code here
@@ -434,5 +436,5 @@ print(weights,file=output_file)
 output_file.close()
 
 # Hold the console after completion if the whole program
-print('\nGenerated output file is : \'perceptron_output.txt\'  \n\nPress any key to exit .')
+print('\nGenerated output file is : \'perceptron_output.txt\' (NB. : Use font \'Consolas\' to view this file) \n\nPress any key to exit .')
 msvcrt.getch()    # getch() is used to hold(for user to read the console before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard

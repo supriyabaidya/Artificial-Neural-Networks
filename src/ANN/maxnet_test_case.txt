@@ -71,19 +71,67 @@ Press any key to exit .
 
 ******************************************************************************
 
-Output: [ When python version is 3.6.4 or above and total system memory is greater than 2 GB ( and if you didn't give the input file name via command line argument , it'll ask the input file name at Runtime ) ]
+Output: [ When python version is 3.6.4 or above and total system memory is greater than 2 GB ( and if you didn't give the input file name via command line argument , it'll ask the input file name at Runtime and then if you Enter WRONG input file name) ]
 ------------------------------------------------------------------------------
 
 ----------------------------------MAXNET----------------------------------
 
+Installed O.S is :  Windows
+Required O.S is :  Windows
+Hence the Installed O.S meet the system requirement.
+
 Installed python version is :  3 . 6 . 4
-Required python version is : 3.6.4
+Required python version is :  3 . 6 . 4 .
 Hence the python compiler meet the system requirement.
 
 'psutil' is present there , so continuing to memory check....
 
-Total system memory is : 3414 M
-Hence the system memory meet the requirement.
+Available(free) system memory is :  4282 M
+Required free system memory is :  100  M
+Hence the free system memory meet the requirement.
+
+The input file structure of input data is given below for example :
+
+BEGIN : file structure
+    learning_rate=0.2 
+    weights=0.25,0.25,0.25 
+    patterns::true output
+     1: 1::-1
+     1:-1:: 1
+    -1: 1::-1
+    -1:-1::-1
+END : file structure
+
+Usage : adaline.py [input_file_name]
+    'input_file_name' is optional , you can give the 'input_file_name' here 
+
+Traceback (most recent call last):
+  File "D:\wamp64\www\WebService\netbeans\NeuralNetworks\src\ANN\maxnet.py", line 207, in input_from_file
+    f=open(filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'maxnet_input'
+
+Press any key to exit .
+
+******************************************************************************
+
+Output: If everything is going well [ When python version is 3.6.4 or above and total system memory is greater than 2 GB and if you Enter CORRECT input file name) ]
+------------------------------------------------------------------------------
+
+----------------------------------MAXNET----------------------------------
+
+Installed O.S is :  Windows
+Required O.S is :  Windows
+Hence the Installed O.S meet the system requirement.
+
+Installed python version is :  3 . 6 . 4
+Required python version is :  3 . 6 . 4 .
+Hence the python compiler meet the system requirement.
+
+'psutil' is present there , so continuing to memory check....
+
+Available(free) system memory is :  5522 M
+Required free system memory is :  100  M
+Hence the free system memory meet the requirement.
 
 The input file structure of input data is given below for example :
 
@@ -95,6 +143,8 @@ END : file structure
 
 Usage : maxnet.py [input_file_name]
     'input_file_name' is optional , you can give the 'input_file_name' here 
+
+Enter the 'input_file_name' now :
 
 
 In this program , size of MAXNET  is assumed :  4

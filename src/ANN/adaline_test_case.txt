@@ -75,19 +75,24 @@ Press any key to exit .
 
 ******************************************************************************
 
-Output: [ When python version is 3.6.4 or above and total system memory is greater than 2 GB ( and if you didn't give the input file name via command line argument , it'll ask the input file name at Runtime ) ]
+Output: [ When python version is 3.6.4 or above and total system memory is greater than 2 GB ( and if you didn't give the input file name via command line argument , it'll ask the input file name at Runtime and then if you Enter WRONG input file name) ]
 ------------------------------------------------------------------------------
 
 ----------------------------------ADALINE----------------------------------
 
+Installed O.S is :  Windows
+Required O.S is :  Windows
+Hence the Installed O.S meet the system requirement.
+
 Installed python version is :  3 . 6 . 4
-Required python version is : 3.6.4
+Required python version is :  3 . 6 . 4 .
 Hence the python compiler meet the system requirement.
 
 'psutil' is present there , so continuing to memory check....
 
-Total system memory is : 3414 M
-Hence the system memory meet the requirement.
+Available(free) system memory is :  4282 M
+Required free system memory is :  100  M
+Hence the free system memory meet the requirement.
 
 The input file structure of input data is given below for example :
 
@@ -104,6 +109,51 @@ END : file structure
 Usage : adaline.py [input_file_name]
     'input_file_name' is optional , you can give the 'input_file_name' here 
 
+Traceback (most recent call last):
+  File "D:\wamp64\www\WebService\netbeans\NeuralNetworks\src\ANN\adaline.py", line 206, in input_from_file
+    f=open(filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'adaline_input'
+
+Press any key to exit .
+
+******************************************************************************
+
+Output: If everything is going well [ When python version is 3.6.4 or above and total system memory is greater than 2 GB and if you Enter CORRECT input file name) ]
+------------------------------------------------------------------------------
+
+----------------------------------ADALINE----------------------------------
+
+Installed O.S is :  Windows
+Required O.S is :  Windows
+Hence the Installed O.S meet the system requirement.
+
+Installed python version is :  3 . 6 . 4
+Required python version is :  3 . 6 . 4 .
+Hence the python compiler meet the system requirement.
+
+'psutil' is present there , so continuing to memory check....
+
+Available(free) system memory is :  5538 M
+Required free system memory is :  100  M
+Hence the free system memory meet the requirement.
+
+The input file structure of input data is given below for example :
+
+BEGIN : file structure
+    learning_rate=0.2 
+    weights=0.25,0.25,0.25 
+    patterns::true output
+     1: 1::-1
+     1:-1:: 1
+    -1: 1::-1
+    -1:-1::-1
+END : file structure
+
+Usage : adaline.py [input_file_name]
+    'input_file_name' is optional , you can give the 'input_file_name' here 
+
+Enter the 'input_file_name' now :
+
 
 Weights :  [0.25, 0.25, 0.25]
 List of patterns :  [[1, 1], [1, -1], [-1, 1], [-1, -1]]
@@ -114,39 +164,39 @@ learning_rate :  0.2
 Starting iteration of ADALINE Algorithm
 
 epoch#  1
-iteration  x[0]          x[1]         x[2]        y_in                   t[i]                  weights[0]                    weights[1]                      weights[2]
--------------------------------------------------------------------------------------------------------------------------------------------------------------
-1              1             1             1             0.75                         -1                         -0.10000000000000003                         -0.10000000000000003                         -0.10000000000000003
-2              1             1             -1             -0.10000000000000003                         1                         0.12                         0.12                         -0.32000000000000006
-3              1             -1             1             -0.32000000000000006                         -1                         -0.015999999999999986                         0.256                         -0.45600000000000007
-4              1             -1             -1             0.18400000000000005                         -1                         -0.2528                         0.4928                         -0.21920000000000003
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Iteration    X[0]        X[1]        X[2]        Y_in        T[i]        Weights[0]    Weights[1]    Weights[2]
+--------------------------------------------------------------------------------------------------------------
+1              1          1          1           0.75         -1           -0.10         -0.10         -0.10
+2              1          1          -1           -0.10         1           0.12         0.12         -0.32
+3              1          -1          1           -0.32         -1           -0.02         0.26         -0.46
+4              1          -1          -1           0.18         -1           -0.25         0.49         -0.22
+--------------------------------------------------------------------------------------------------------------
 
 Output (y_out)
 [1, -1, -1, 1]
 Target Output (t)
 [-1, 1, -1, -1]
 epoch#  2
-iteration  x[0]          x[1]         x[2]        y_in                   t[i]                  weights[0]                    weights[1]                      weights[2]
--------------------------------------------------------------------------------------------------------------------------------------------------------------
-1              1             1             1             0.020799999999999957                         -1                         -0.45696000000000003                         0.28864                         -0.42336000000000007
-2              1             1             -1             0.25504000000000004                         1                         -0.307968                         0.437632                         -0.5723520000000001
-3              1             -1             1             -1.317952                         -1                         -0.24437760000000003                         0.37404160000000003                         -0.5087616
-4              1             -1             -1             -0.10965760000000002                         -1                         -0.42244608000000006                         0.5521100800000001                         -0.33069312000000006
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Iteration    X[0]        X[1]        X[2]        Y_in        T[i]        Weights[0]    Weights[1]    Weights[2]
+--------------------------------------------------------------------------------------------------------------
+1              1          1          1           0.02         -1           -0.46         0.29         -0.42
+2              1          1          -1           0.26         1           -0.31         0.44         -0.57
+3              1          -1          1           -1.32         -1           -0.24         0.37         -0.51
+4              1          -1          -1           -0.11         -1           -0.42         0.55         -0.33
+--------------------------------------------------------------------------------------------------------------
 
 Output (y_out)
 [1, 1, -1, -1]
 Target Output (t)
 [-1, 1, -1, -1]
 epoch#  3
-iteration  x[0]          x[1]         x[2]        y_in                   t[i]                  weights[0]                    weights[1]                      weights[2]
--------------------------------------------------------------------------------------------------------------------------------------------------------------
-1              1             1             1             -0.20102912000000006                         -1                         -0.5822402560000001                         0.39231590400000005                         -0.4904872960000001
-2              1             1             -1             0.30056294400000005                         1                         -0.44235284480000003                         0.5322033152000001                         -0.6303747072000001
-3              1             -1             1             -1.6049308672000002                         -1                         -0.32136667135999997                         0.41121714176                         -0.50938853376
-4              1             -1             -1             -0.22319527935999994                         -1                         -0.476727615488                         0.5665780858880001                         -0.354027589632
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Iteration    X[0]        X[1]        X[2]        Y_in        T[i]        Weights[0]    Weights[1]    Weights[2]
+--------------------------------------------------------------------------------------------------------------
+1              1          1          1           -0.20         -1           -0.58         0.39         -0.49
+2              1          1          -1           0.30         1           -0.44         0.53         -0.63
+3              1          -1          1           -1.60         -1           -0.32         0.41         -0.51
+4              1          -1          -1           -0.22         -1           -0.48         0.57         -0.35
+--------------------------------------------------------------------------------------------------------------
 
 Output (y_out)
 [-1, 1, -1, -1]

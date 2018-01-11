@@ -11,6 +11,7 @@ version 3.0 (final release)
 
  Algorithm of ADALINE is given below along with the python code.
  '''
+from __future__ import print_function   # for print function with the file parameter , otherwise shows viable error , though without this import statement program runs fine
 
 print('----------------------------------ADALINE----------------------------------')
 #### storing every Output to a file
@@ -188,8 +189,9 @@ if sys.argv.__len__()==1:
     \'input_file_name\' is optional , you can give the \'input_file_name\' here \n')
     print('Usage : adaline.py [input_file_name]\n\
     \'input_file_name\' is optional , you can give the \'input_file_name\' here \n',file=output_file)
-#     file_name='adaline_input.txt'
+#    file_name='adaline_input.txt'
     file_name=input('Enter the \'input_file_name\' now :')  # taking the 'input_file_name' to 'file_name' manually
+    print('Enter the \'input_file_name\' now :\n',file=output_file)
 else:
     file_name=sys.argv[1]   # storing the 'input_file_name' to 'file_name' from command line argument
 
@@ -388,8 +390,8 @@ while not terminating:
         for j in range(0,3):    # for each input unit i
             weights[j]+=learning_rate*(true_output[i]-y_in)*x[j]
         
-        print((i+1),'             ',x[0],'          ',x[1],'          ',x[2],'          ',format(y_in,'.2f'),'        ',true_output[i],'          ',format(weights[0],'.2f'),'          ',format(weights[1],'.2f'),'          ',format(weights[2],'.2f'))
-        print((i+1),'             ',x[0],'          ',x[1],'          ',x[2],'          ',format(y_in,'.2f'),'        ',true_output[i],'          ',format(weights[0],'.2f'),'          ',format(weights[1],'.2f'),'          ',format(weights[2],'.2f'),file=output_file)
+        print((i+1),'            ',x[0],'        ',x[1],'        ',x[2],'         ',format(y_in,'.2f'),'       ',true_output[i],'         ',format(weights[0],'.2f'),'       ',format(weights[1],'.2f'),'       ',format(weights[2],'.2f'))
+        print((i+1),'            ',x[0],'        ',x[1],'        ',x[2],'         ',format(y_in,'.2f'),'       ',true_output[i],'         ',format(weights[0],'.2f'),'       ',format(weights[1],'.2f'),'       ',format(weights[2],'.2f'),file=output_file)
 ###END : step 7.
     print('--------------------------------------------------------------------------------------------------------------')
     print('--------------------------------------------------------------------------------------------------------------',file=output_file)    
@@ -427,5 +429,5 @@ while not terminating:
 output_file.close();
 
 # Hold the console after completion if the whole program
-print('\nGenerated output file is : \'adaline_output.txt\'  \n\nPress any key to exit .')
+print('\nGenerated output file is : \'adaline_output.txt\' (NB. : Use font \'Consolas\' to view this file) \n\nPress any key to exit .')
 msvcrt.getch()    # getch() is used to hold(for user to read the console before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard

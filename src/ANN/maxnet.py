@@ -14,6 +14,8 @@ In MAXNET Clustering, The given pattern X=[x_0,x_1, . ... ..  ,x_m] is to be clu
 
  Algorithm of MAXNET is given below along with the python code.
  '''
+from __future__ import print_function   # for print function with the file parameter , otherwise shows viable error , though without this import statement program runs fine
+ 
 def winner_takes_all(my_list):  # 'winner_takes_all' is the method/def for "winner takes all" strategy , this method is used in main algorithm
     array=[]
     for i in range(0,len(my_list)):
@@ -191,6 +193,7 @@ if sys.argv.__len__()==1:
     print('Usage : maxnet.py [input_file_name]\n\
     \'input_file_name\' is optional , you can give the \'input_file_name\' here \n',file=output_file)
     file_name=input('Enter the \'input_file_name\' now :')  # taking the 'input_file_name' to 'file_name' manually
+    print('Enter the \'input_file_name\' now :\n',file=output_file)
 else:
     file_name=sys.argv[1]   # storing the 'input_file_name' to 'file_name' from command line argument
 
@@ -364,5 +367,5 @@ while True:
 output_file.close()
 
 # Hold the console after completion if the whole program
-print('\nGenerated output file is : \'maxnet_output.txt\'  \n\nPress any key to exit .')
+print('\nGenerated output file is : \'maxnet_output.txt\' (NB. : Use font \'Consolas\' to view this file) \n\nPress any key to exit .')
 msvcrt.getch()    # getch() is used to hold(for user to read the console before exit) the console(output) window on the screen after the whole program run is completed till the user enters a key from keyboard
